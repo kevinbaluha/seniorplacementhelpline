@@ -1,21 +1,22 @@
 # Senior Placement Helpline
 
-Static landing page for **seniorplacementhelpline.com** — a lead-generation site for Senior Placement Helpline LLC.
+Static landing page for **seniorplacementhelpline.com** — a lead-generation site for Senior Placement Helpline LLC (Marshall Zale).
 
 ## What It Is
 
 A single-page, fully self-contained HTML landing page designed to:
+
 - Capture leads from families seeking senior assisted living placement
 - Funnel inquiries to Higher Vision Health (highervisiohealth.com)
-- Provide instant engagement via the embedded Helo chatbot (askhelo.com)
+- Drive phone calls to **866-ALF-FIND (866-253-3463)**
 
-**Phone:** 866-ALF-FIND (866-253-3463)
+**Sections:** Hero → How It Works → Why Us → Service Area Map → Lead Form → Testimonials → Footer
 
 ## Files
 
 | File | Description |
 |------|-------------|
-| `index.html` | Complete landing page — all CSS is inline in a `<style>` tag, no external dependencies beyond Google Fonts and the Helo chatbot script |
+| `index.html` | Complete landing page — all CSS inline in `<style>` tag; no external dependencies beyond Google Fonts |
 
 ## Deploying to Cloudflare Pages
 
@@ -24,6 +25,7 @@ A single-page, fully self-contained HTML landing page designed to:
 2. **Log in to Cloudflare Dashboard** → Workers & Pages → Create application → Pages → Connect to Git.
 
 3. **Select the repository** and configure the build:
+
    | Setting | Value |
    |---------|-------|
    | Framework preset | None |
@@ -31,7 +33,7 @@ A single-page, fully self-contained HTML landing page designed to:
    | Build output directory | `/` (or leave blank) |
    | Root directory | `/` |
 
-4. **Deploy.** Cloudflare Pages will serve `index.html` as the root automatically.
+4. **Deploy.** Cloudflare Pages serves `index.html` as the root automatically.
 
 5. **Custom domain:** In Cloudflare Pages → your project → Custom domains → Add `seniorplacementhelpline.com` and follow the DNS instructions.
 
@@ -41,6 +43,6 @@ A single-page, fully self-contained HTML landing page designed to:
 
 Form submissions POST JSON to `https://highervisiohealth.com/leads`. Update this URL in `index.html` once the real endpoint is configured.
 
-## Chatbot
+## Phone Number
 
-The Helo chatbot is loaded via `https://askhelo.com/embed.js`. Update `clientId` in the `HeloConfig` block near the bottom of `index.html` once a real client ID is issued.
+**866-ALF-FIND** = **866-253-3463** — appears prominently in the top bar, nav, hero, lead form section, CTA band, and footer.
