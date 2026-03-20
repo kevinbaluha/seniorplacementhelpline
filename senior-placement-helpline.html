@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark-gold">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,40 +10,228 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --navy: #0a1628;
-      --navy-mid: #0f2040;
-      --blue: #1a4a8a;
-      --gold: #c8972a;
-      --gold-light: #e8b84b;
-      --cream: #f5f0e8;
-      --white: #ffffff;
-      --gray-light: #f0f4f8;
-      --gray-text: #6b7a8d;
-      --red-warm: #c0392b;
-    }
-
     html { scroll-behavior: smooth; }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--navy);
-      color: var(--white);
-      line-height: 1.6;
-      overflow-x: hidden;
+    /* ═══════════════════════════════════════════
+       THEME TOKENS
+    ═══════════════════════════════════════════ */
+
+    /* THEME 1: Dark Navy + Gold (default) — Premium, authoritative */
+    [data-theme="dark-gold"] {
+      --bg-primary:     #0a1628;
+      --bg-secondary:   #0f2040;
+      --bg-card:        rgba(255,255,255,0.04);
+      --bg-card-border: rgba(255,255,255,0.09);
+      --accent:         #c8972a;
+      --accent-light:   #e8b84b;
+      --accent-text:    #0a1628;
+      --text-primary:   #ffffff;
+      --text-secondary: rgba(255,255,255,0.72);
+      --text-muted:     rgba(255,255,255,0.45);
+      --topbar-bg:      #c8972a;
+      --topbar-text:    #0a1628;
+      --nav-bg:         #0f2040;
+      --nav-border:     rgba(200,151,42,0.25);
+      --hero-glow:      rgba(200,151,42,0.08);
+      --section-alt:    #0f2040;
+      --divider:        rgba(200,151,42,0.2);
+      --form-bg:        rgba(255,255,255,0.05);
+      --form-border:    rgba(255,255,255,0.1);
+      --input-bg:       rgba(255,255,255,0.07);
+      --input-border:   rgba(255,255,255,0.15);
+      --footer-bg:      #07101e;
+      --quote-bg:       rgba(200,151,42,0.06);
+      --quote-border:   #c8972a;
+      --eyebrow-bg:     rgba(200,151,42,0.15);
+      --eyebrow-border: rgba(200,151,42,0.4);
+      --badge-bg:       rgba(200,151,42,0.15);
+      --badge-border:   rgba(200,151,42,0.4);
+      --stars:          #c8972a;
+      --step-num-bg:    #c8972a;
+      --step-num-text:  #0a1628;
     }
 
-    /* ─── UTILITY ─── */
+    /* THEME 2: Warm Light — Friendly, family-oriented, approachable */
+    [data-theme="warm-light"] {
+      --bg-primary:     #faf6f0;
+      --bg-secondary:   #f0e8d8;
+      --bg-card:        #ffffff;
+      --bg-card-border: #e8dcc8;
+      --accent:         #b85c1a;
+      --accent-light:   #d4701e;
+      --accent-text:    #ffffff;
+      --text-primary:   #2c1810;
+      --text-secondary: #5a3a28;
+      --text-muted:     #9a7a68;
+      --topbar-bg:      #b85c1a;
+      --topbar-text:    #ffffff;
+      --nav-bg:         #ffffff;
+      --nav-border:     #e8dcc8;
+      --hero-glow:      rgba(184,92,26,0.06);
+      --section-alt:    #f0e8d8;
+      --divider:        #d4b896;
+      --form-bg:        #ffffff;
+      --form-border:    #e8dcc8;
+      --input-bg:       #faf6f0;
+      --input-border:   #d4b896;
+      --footer-bg:      #2c1810;
+      --quote-bg:       rgba(184,92,26,0.05);
+      --quote-border:   #b85c1a;
+      --eyebrow-bg:     rgba(184,92,26,0.1);
+      --eyebrow-border: rgba(184,92,26,0.3);
+      --badge-bg:       rgba(184,92,26,0.1);
+      --badge-border:   rgba(184,92,26,0.3);
+      --stars:          #b85c1a;
+      --step-num-bg:    #b85c1a;
+      --step-num-text:  #ffffff;
+    }
+
+    /* THEME 3: Clinical Trust — Clean, medical credibility, white + teal */
+    [data-theme="clinical"] {
+      --bg-primary:     #f4f8fb;
+      --bg-secondary:   #e8f0f7;
+      --bg-card:        #ffffff;
+      --bg-card-border: #cddaea;
+      --accent:         #0d6e8a;
+      --accent-light:   #1089aa;
+      --accent-text:    #ffffff;
+      --text-primary:   #0a2535;
+      --text-secondary: #2e5468;
+      --text-muted:     #6e8a9a;
+      --topbar-bg:      #0d6e8a;
+      --topbar-text:    #ffffff;
+      --nav-bg:         #ffffff;
+      --nav-border:     #cddaea;
+      --hero-glow:      rgba(13,110,138,0.06);
+      --section-alt:    #e8f0f7;
+      --divider:        #a0c4d4;
+      --form-bg:        #ffffff;
+      --form-border:    #cddaea;
+      --input-bg:       #f4f8fb;
+      --input-border:   #b0ccd8;
+      --footer-bg:      #0a2535;
+      --quote-bg:       rgba(13,110,138,0.05);
+      --quote-border:   #0d6e8a;
+      --eyebrow-bg:     rgba(13,110,138,0.1);
+      --eyebrow-border: rgba(13,110,138,0.3);
+      --badge-bg:       rgba(13,110,138,0.1);
+      --badge-border:   rgba(13,110,138,0.3);
+      --stars:          #0d6e8a;
+      --step-num-bg:    #0d6e8a;
+      --step-num-text:  #ffffff;
+    }
+
+    /* THEME 4: Sage & Earth — Calm, nurturing, home-like */
+    [data-theme="sage"] {
+      --bg-primary:     #f2f5f0;
+      --bg-secondary:   #e4ece0;
+      --bg-card:        #ffffff;
+      --bg-card-border: #c8d8c0;
+      --accent:         #4a7c59;
+      --accent-light:   #5e9a70;
+      --accent-text:    #ffffff;
+      --text-primary:   #1a2e1f;
+      --text-secondary: #3a5a42;
+      --text-muted:     #7a9a82;
+      --topbar-bg:      #4a7c59;
+      --topbar-text:    #ffffff;
+      --nav-bg:         #ffffff;
+      --nav-border:     #c8d8c0;
+      --hero-glow:      rgba(74,124,89,0.06);
+      --section-alt:    #e4ece0;
+      --divider:        #a8c8a8;
+      --form-bg:        #ffffff;
+      --form-border:    #c8d8c0;
+      --input-bg:       #f2f5f0;
+      --input-border:   #b0c8b0;
+      --footer-bg:      #1a2e1f;
+      --quote-bg:       rgba(74,124,89,0.05);
+      --quote-border:   #4a7c59;
+      --eyebrow-bg:     rgba(74,124,89,0.1);
+      --eyebrow-border: rgba(74,124,89,0.3);
+      --badge-bg:       rgba(74,124,89,0.1);
+      --badge-border:   rgba(74,124,89,0.3);
+      --stars:          #4a7c59;
+      --step-num-bg:    #4a7c59;
+      --step-num-text:  #ffffff;
+    }
+
+    /* ═══════════════════════════════════════════
+       THEME SWITCHER UI
+    ═══════════════════════════════════════════ */
+    .theme-switcher {
+      position: fixed;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      z-index: 200;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      background: rgba(0,0,0,0.6);
+      border-radius: 8px 0 0 8px;
+      overflow: hidden;
+      backdrop-filter: blur(8px);
+    }
+    .theme-switcher-label {
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      padding: 8px 10px 4px;
+      font-family: 'Inter', sans-serif;
+    }
+    .theme-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: rgba(255,255,255,0.7);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: background 0.15s, color 0.15s;
+      text-align: left;
+    }
+    .theme-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+    .theme-btn.active { background: rgba(255,255,255,0.18); color: #fff; }
+    .theme-swatch {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      border: 2px solid rgba(255,255,255,0.3);
+    }
+    .swatch-dark-gold  { background: linear-gradient(135deg, #0a1628 50%, #c8972a 50%); }
+    .swatch-warm-light { background: linear-gradient(135deg, #faf6f0 50%, #b85c1a 50%); }
+    .swatch-clinical   { background: linear-gradient(135deg, #f4f8fb 50%, #0d6e8a 50%); }
+    .swatch-sage       { background: linear-gradient(135deg, #f2f5f0 50%, #4a7c59 50%); }
+
+    /* ═══════════════════════════════════════════
+       BASE STYLES (use tokens)
+    ═══════════════════════════════════════════ */
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background 0.3s, color 0.3s;
+    }
+
     .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
-    .serif { font-family: 'Playfair Display', serif; }
-    .gold { color: var(--gold-light); }
     .center { text-align: center; }
 
-    /* ─── TOP BAR ─── */
+    /* TOP BAR */
     .topbar {
-      background: var(--gold);
-      color: var(--navy);
+      background: var(--topbar-bg);
+      color: var(--topbar-text);
       text-align: center;
       padding: 10px 24px;
       font-size: 0.85rem;
@@ -52,19 +240,19 @@
       text-transform: uppercase;
     }
 
-    /* ─── NAV ─── */
+    /* NAV */
     nav {
-      background: var(--navy-mid);
+      background: var(--nav-bg);
       padding: 18px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid rgba(200,151,42,0.25);
+      border-bottom: 1px solid var(--nav-border);
     }
     nav img.logo { height: 48px; }
     .nav-cta {
-      background: var(--gold);
-      color: var(--navy);
+      background: var(--accent);
+      color: var(--accent-text);
       font-weight: 700;
       font-size: 0.9rem;
       padding: 10px 22px;
@@ -73,11 +261,11 @@
       letter-spacing: 0.02em;
       transition: background 0.2s;
     }
-    .nav-cta:hover { background: var(--gold-light); }
+    .nav-cta:hover { background: var(--accent-light); }
 
-    /* ─── HERO ─── */
+    /* HERO */
     .hero {
-      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 60%, #0d1f3a 100%);
+      background: linear-gradient(160deg, var(--bg-primary) 0%, var(--bg-secondary) 60%, var(--bg-primary) 100%);
       padding: 80px 24px 90px;
       text-align: center;
       position: relative;
@@ -87,14 +275,14 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at 50% 0%, rgba(200,151,42,0.08) 0%, transparent 70%);
+      background: radial-gradient(ellipse at 50% 0%, var(--hero-glow) 0%, transparent 70%);
       pointer-events: none;
     }
     .hero-eyebrow {
       display: inline-block;
-      background: rgba(200,151,42,0.15);
-      border: 1px solid rgba(200,151,42,0.4);
-      color: var(--gold-light);
+      background: var(--eyebrow-bg);
+      border: 1px solid var(--eyebrow-border);
+      color: var(--accent-light, var(--accent));
       font-size: 0.78rem;
       font-weight: 700;
       letter-spacing: 0.12em;
@@ -110,14 +298,15 @@
       max-width: 760px;
       margin: 0 auto 22px;
       font-weight: 700;
+      color: var(--text-primary);
     }
     .hero h1 em {
       font-style: italic;
-      color: var(--gold-light);
+      color: var(--accent-light, var(--accent));
     }
     .hero-sub {
       font-size: clamp(1rem, 2.5vw, 1.2rem);
-      color: rgba(255,255,255,0.75);
+      color: var(--text-secondary);
       max-width: 580px;
       margin: 0 auto 40px;
       font-weight: 400;
@@ -125,26 +314,22 @@
     }
     .hero-cta {
       display: inline-block;
-      background: var(--gold);
-      color: var(--navy);
+      background: var(--accent);
+      color: var(--accent-text);
       font-size: 1.15rem;
       font-weight: 800;
       padding: 18px 44px;
       border-radius: 4px;
       text-decoration: none;
       letter-spacing: 0.02em;
-      box-shadow: 0 8px 32px rgba(200,151,42,0.35);
-      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+      transition: transform 0.15s, background 0.15s;
     }
-    .hero-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 40px rgba(200,151,42,0.5);
-      background: var(--gold-light);
-    }
+    .hero-cta:hover { transform: translateY(-2px); background: var(--accent-light); }
     .hero-reassurance {
       margin-top: 18px;
       font-size: 0.82rem;
-      color: rgba(255,255,255,0.45);
+      color: var(--text-muted);
       letter-spacing: 0.04em;
     }
     .hero-stats {
@@ -158,46 +343,45 @@
     .stat-number {
       font-size: 2rem;
       font-weight: 800;
-      color: var(--gold-light);
+      color: var(--accent-light, var(--accent));
       display: block;
       line-height: 1;
     }
     .stat-label {
       font-size: 0.78rem;
-      color: rgba(255,255,255,0.5);
+      color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.08em;
       margin-top: 4px;
     }
 
-    /* ─── TRUST STRIP ─── */
+    /* TRUST STRIP */
     .trust-strip {
-      background: rgba(255,255,255,0.04);
-      border-top: 1px solid rgba(255,255,255,0.08);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--bg-card-border);
+      border-bottom: 1px solid var(--bg-card-border);
       padding: 20px 24px;
       display: flex;
       justify-content: center;
       gap: 40px;
       flex-wrap: wrap;
       font-size: 0.8rem;
-      color: rgba(255,255,255,0.5);
+      color: var(--text-muted);
       letter-spacing: 0.06em;
       text-transform: uppercase;
     }
     .trust-item { display: flex; align-items: center; gap: 8px; }
-    .trust-icon { color: var(--gold); font-size: 1rem; }
+    .trust-icon { color: var(--accent); font-size: 1rem; }
 
-    /* ─── SECTIONS ─── */
+    /* SECTIONS */
     section { padding: 80px 24px; }
-
     .section-eyebrow {
       display: block;
       font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--gold-light);
+      color: var(--accent-light, var(--accent));
       margin-bottom: 14px;
     }
     h2 {
@@ -205,77 +389,58 @@
       font-size: clamp(1.8rem, 4vw, 2.6rem);
       line-height: 1.2;
       margin-bottom: 20px;
+      color: var(--text-primary);
     }
     .lead {
       font-size: 1.1rem;
-      color: rgba(255,255,255,0.75);
+      color: var(--text-secondary);
       max-width: 620px;
       line-height: 1.75;
       margin-bottom: 24px;
     }
-    p {
-      color: rgba(255,255,255,0.65);
-      line-height: 1.75;
-      margin-bottom: 16px;
-    }
+    p { color: var(--text-secondary); line-height: 1.75; margin-bottom: 16px; }
 
-    /* ─── SECTION: ACKNOWLEDGMENT ─── */
-    .section-acknowledge {
-      background: linear-gradient(180deg, var(--navy-mid) 0%, var(--navy) 100%);
-      border-top: 2px solid rgba(200,151,42,0.2);
-    }
+    /* ACKNOWLEDGE */
+    .section-acknowledge { background: var(--bg-secondary); border-top: 2px solid var(--divider); }
     .acknowledge-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 48px;
+      gap: 24px;
       align-items: start;
       max-width: 900px;
-      margin: 0 auto;
+      margin: 40px auto 0;
     }
-    @media (max-width: 640px) { .acknowledge-grid { grid-template-columns: 1fr; gap: 32px; } }
+    @media (max-width: 640px) { .acknowledge-grid { grid-template-columns: 1fr; } }
     .pain-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.09);
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
       border-radius: 6px;
       padding: 28px;
     }
     .pain-card-icon { font-size: 1.6rem; margin-bottom: 12px; }
-    .pain-card h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: var(--white);
-    }
+    .pain-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; color: var(--text-primary); }
     .pain-card p { font-size: 0.92rem; margin: 0; }
 
-    /* ─── SECTION: YOU WON'T GET IT WRONG ─── */
-    .section-permission {
-      background: var(--navy);
-      text-align: center;
-    }
-    .permission-block {
-      max-width: 720px;
-      margin: 0 auto;
-    }
+    /* PERMISSION */
+    .section-permission { background: var(--bg-primary); text-align: center; }
+    .permission-block { max-width: 720px; margin: 0 auto; }
     .big-quote {
       font-family: 'Playfair Display', serif;
       font-size: clamp(1.4rem, 3.5vw, 2.1rem);
       font-style: italic;
-      color: var(--gold-light);
+      color: var(--accent-light, var(--accent));
       line-height: 1.5;
       margin: 32px 0;
       padding: 32px 40px;
-      border-left: 3px solid var(--gold);
-      border-right: 3px solid var(--gold);
-      background: rgba(200,151,42,0.06);
+      border-left: 3px solid var(--quote-border);
+      border-right: 3px solid var(--quote-border);
+      background: var(--quote-bg);
       border-radius: 4px;
       text-align: left;
     }
 
-    /* ─── SECTION: SIBLING DYNAMICS ─── */
-    .section-siblings {
-      background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%);
-    }
+    /* SIBLINGS */
+    .section-siblings { background: var(--bg-secondary); }
     .sibling-columns {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -287,31 +452,28 @@
     .sibling-col h3 {
       font-size: 1rem;
       font-weight: 700;
-      color: var(--gold-light);
+      color: var(--accent-light, var(--accent));
       margin-bottom: 12px;
       text-transform: uppercase;
       letter-spacing: 0.06em;
     }
 
-    /* ─── SECTION: HOW IT WORKS ─── */
-    .section-process { background: var(--navy-mid); }
+    /* PROCESS */
+    .section-process { background: var(--bg-secondary); }
     .process-steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-      margin-top: 40px;
+      gap: 24px;
+      margin: 40px auto 0;
       max-width: 860px;
-      margin-left: auto;
-      margin-right: auto;
     }
-    @media (max-width: 640px) { .process-steps { grid-template-columns: 1fr; gap: 24px; } }
+    @media (max-width: 640px) { .process-steps { grid-template-columns: 1fr; } }
     .step {
       text-align: center;
       padding: 32px 20px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
       border-radius: 6px;
-      position: relative;
     }
     .step-number {
       display: inline-flex;
@@ -319,74 +481,66 @@
       justify-content: center;
       width: 48px;
       height: 48px;
-      background: var(--gold);
-      color: var(--navy);
+      background: var(--step-num-bg);
+      color: var(--step-num-text);
       font-weight: 900;
       font-size: 1.2rem;
       border-radius: 50%;
       margin-bottom: 16px;
     }
-    .step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
+    .step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; color: var(--text-primary); }
     .step p { font-size: 0.88rem; margin: 0; }
 
-    /* ─── SECTION: PROOF / TESTIMONIALS ─── */
-    .section-proof { background: var(--navy); }
+    /* CARE TYPES */
+    .section-care { background: var(--bg-primary); }
+    .care-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin: 40px auto 0;
+      max-width: 860px;
+    }
+    .care-card {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: 6px;
+      padding: 26px 22px;
+    }
+    .care-card-icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .care-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--text-primary); }
+    .care-card p { font-size: 0.86rem; margin: 0; }
+
+    /* TESTIMONIALS */
+    .section-proof { background: var(--bg-secondary); }
     .testimonials-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 24px;
-      margin-top: 40px;
+      margin: 40px auto 0;
       max-width: 920px;
-      margin-left: auto;
-      margin-right: auto;
     }
     .testimonial {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.09);
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
       border-radius: 6px;
       padding: 28px;
     }
     .testimonial-text {
       font-style: italic;
       font-size: 0.95rem;
-      color: rgba(255,255,255,0.8);
+      color: var(--text-secondary);
       margin-bottom: 16px;
       line-height: 1.7;
     }
-    .testimonial-author {
-      font-size: 0.8rem;
-      color: var(--gold-light);
-      font-weight: 600;
-    }
-    .stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 10px; }
+    .testimonial-author { font-size: 0.8rem; color: var(--accent-light, var(--accent)); font-weight: 600; }
+    .stars { color: var(--stars); font-size: 0.85rem; margin-bottom: 10px; }
 
-    /* ─── CARE TYPES ─── */
-    .section-care { background: var(--navy-mid); }
-    .care-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 40px;
-      max-width: 860px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .care-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 6px;
-      padding: 26px 22px;
-    }
-    .care-card-icon { font-size: 1.8rem; margin-bottom: 12px; }
-    .care-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
-    .care-card p { font-size: 0.86rem; margin: 0; }
-
-    /* ─── FINAL CTA ─── */
+    /* FINAL CTA */
     .section-cta {
-      background: linear-gradient(160deg, #0d1f3a 0%, var(--navy-mid) 100%);
+      background: var(--bg-secondary);
       text-align: center;
       padding: 100px 24px;
-      border-top: 2px solid rgba(200,151,42,0.25);
+      border-top: 2px solid var(--divider);
     }
     .section-cta h2 { max-width: 680px; margin: 0 auto 20px; }
     .section-cta .lead { margin: 0 auto 36px; text-align: center; }
@@ -394,18 +548,16 @@
       display: block;
       font-size: clamp(2rem, 6vw, 3.5rem);
       font-weight: 900;
-      color: var(--gold-light);
+      color: var(--accent-light, var(--accent));
       letter-spacing: 0.04em;
       text-decoration: none;
       margin: 10px 0 28px;
-      transition: color 0.2s;
     }
-    .cta-phone-number:hover { color: var(--white); }
     .cta-free-badge {
       display: inline-block;
-      background: rgba(200,151,42,0.15);
-      border: 1px solid rgba(200,151,42,0.4);
-      color: var(--gold-light);
+      background: var(--badge-bg);
+      border: 1px solid var(--badge-border);
+      color: var(--accent-light, var(--accent));
       font-size: 0.8rem;
       font-weight: 700;
       letter-spacing: 0.1em;
@@ -415,10 +567,10 @@
       margin-bottom: 28px;
     }
 
-    /* ─── FORM ─── */
+    /* FORM */
     .callback-form {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
+      background: var(--form-bg);
+      border: 1px solid var(--form-border);
       border-radius: 8px;
       padding: 40px;
       max-width: 540px;
@@ -430,13 +582,9 @@
       font-size: 1.4rem;
       margin-bottom: 8px;
       text-align: center;
+      color: var(--text-primary);
     }
-    .form-sub {
-      text-align: center;
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 28px;
-    }
+    .form-sub { text-align: center; font-size: 0.88rem; color: var(--text-muted); margin-bottom: 28px; }
     .form-group { margin-bottom: 16px; }
     label {
       display: block;
@@ -444,29 +592,27 @@
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.6);
+      color: var(--text-muted);
       margin-bottom: 6px;
     }
     input, select, textarea {
       width: 100%;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.15);
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
       border-radius: 4px;
-      color: var(--white);
+      color: var(--text-primary);
       font-family: 'Inter', sans-serif;
       font-size: 0.95rem;
       padding: 12px 14px;
       outline: none;
       transition: border-color 0.2s;
     }
-    input::placeholder, select::placeholder, textarea::placeholder { color: rgba(255,255,255,0.3); }
-    input:focus, select:focus, textarea:focus { border-color: var(--gold); }
-    select option { background: var(--navy-mid); color: var(--white); }
+    input:focus, select:focus, textarea:focus { border-color: var(--accent); }
     .submit-btn {
       display: block;
       width: 100%;
-      background: var(--gold);
-      color: var(--navy);
+      background: var(--accent);
+      color: var(--accent-text);
       font-family: 'Inter', sans-serif;
       font-size: 1rem;
       font-weight: 800;
@@ -474,21 +620,15 @@
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      letter-spacing: 0.03em;
       margin-top: 8px;
       transition: background 0.2s, transform 0.15s;
     }
-    .submit-btn:hover { background: var(--gold-light); transform: translateY(-1px); }
-    .form-privacy {
-      text-align: center;
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.35);
-      margin-top: 12px;
-    }
+    .submit-btn:hover { background: var(--accent-light); transform: translateY(-1px); }
+    .form-privacy { text-align: center; font-size: 0.75rem; color: var(--text-muted); margin-top: 12px; }
 
-    /* ─── FOOTER ─── */
+    /* FOOTER */
     footer {
-      background: #07101e;
+      background: var(--footer-bg);
       border-top: 1px solid rgba(255,255,255,0.07);
       padding: 40px 24px 28px;
       text-align: center;
@@ -497,7 +637,7 @@
     .footer-phone {
       font-size: 1.5rem;
       font-weight: 800;
-      color: var(--gold-light);
+      color: var(--accent-light, var(--accent));
       text-decoration: none;
       display: block;
       margin-bottom: 12px;
@@ -510,28 +650,44 @@
       margin: 20px auto 0;
     }
 
-    /* ─── STICKY MOBILE CTA ─── */
+    /* STICKY MOBILE CTA */
     .sticky-cta {
       display: none;
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      background: var(--gold);
-      color: var(--navy);
+      background: var(--accent);
+      color: var(--accent-text);
       text-align: center;
       padding: 16px 24px;
       font-weight: 800;
       font-size: 1.05rem;
       text-decoration: none;
       z-index: 100;
-      letter-spacing: 0.02em;
     }
     @media (max-width: 640px) { .sticky-cta { display: block; } }
 
   </style>
 </head>
 <body>
+
+<!-- THEME SWITCHER -->
+<div class="theme-switcher">
+  <div class="theme-switcher-label">Theme</div>
+  <button class="theme-btn active" data-theme="dark-gold" onclick="setTheme('dark-gold', this)">
+    <span class="theme-swatch swatch-dark-gold"></span> Navy &amp; Gold
+  </button>
+  <button class="theme-btn" data-theme="warm-light" onclick="setTheme('warm-light', this)">
+    <span class="theme-swatch swatch-warm-light"></span> Warm Light
+  </button>
+  <button class="theme-btn" data-theme="clinical" onclick="setTheme('clinical', this)">
+    <span class="theme-swatch swatch-clinical"></span> Clinical
+  </button>
+  <button class="theme-btn" data-theme="sage" onclick="setTheme('sage', this)">
+    <span class="theme-swatch swatch-sage"></span> Sage &amp; Earth
+  </button>
+</div>
 
 <!-- TOP BAR -->
 <div class="topbar">
@@ -548,20 +704,16 @@
 <section class="hero">
   <div class="container">
     <span class="hero-eyebrow">Senior Placement Helpline</span>
-
     <h1>
       You've been trying to get this right.<br />
       <em>Let us make sure you do.</em>
     </h1>
-
     <p class="hero-sub">
       This decision feels enormous because it is. And you're not overthinking it —
       you're loving someone. One free call, and you'll know exactly what to do next.
     </p>
-
     <a href="tel:+18662533463" class="hero-cta">Call 866-ALF-FIND — It's Free</a>
     <div class="hero-reassurance">No cost. No pressure. Just answers.</div>
-
     <div class="hero-stats">
       <div class="stat-item">
         <span class="stat-number">FREE</span>
@@ -591,7 +743,7 @@
   <div class="trust-item"><span class="trust-icon">✓</span> We Work For Your Family</div>
 </div>
 
-<!-- SECTION: ACKNOWLEDGMENT — THE REAL PAIN -->
+<!-- ACKNOWLEDGE -->
 <section class="section-acknowledge">
   <div class="container">
     <span class="section-eyebrow">We know what you're actually going through</span>
@@ -600,75 +752,51 @@
       Nobody tells you this part: the hardest thing isn't finding a facility.
       It's the fear of making the wrong call. The weight of knowing someone is counting on you to get it right.
     </p>
-
     <div class="acknowledge-grid">
       <div class="pain-card">
         <div class="pain-card-icon">😔</div>
         <h3>"What if I make the wrong choice for them?"</h3>
-        <p>
-          You've run through every scenario. Every "what if." That's not weakness —
-          that's what it looks like when you genuinely love someone and refuse to phone it in.
-          You deserve someone in your corner who can give you a clear, confident answer.
-        </p>
+        <p>You've run through every scenario. Every "what if." That's not weakness — that's what it looks like when you genuinely love someone and refuse to phone it in. You deserve someone in your corner who can give you a clear, confident answer.</p>
       </div>
-
       <div class="pain-card">
         <div class="pain-card-icon">👨‍👩‍👧‍👦</div>
         <h3>"My siblings have opinions. And I'm the one holding the bag."</h3>
-        <p>
-          Maybe everyone has a take. Maybe you're the one who actually showed up.
-          Our advocates give you a grounded, professional recommendation
-          you can stand behind — in any room, with any family member.
-        </p>
+        <p>Maybe everyone has a take. Maybe you're the one who actually showed up. Our advocates give you a grounded, professional recommendation you can stand behind — in any room, with any family member.</p>
       </div>
-
       <div class="pain-card">
         <div class="pain-card-icon">💔</div>
         <h3>"Am I giving up on them?"</h3>
-        <p>
-          You're not. Finding the right care isn't abandonment — it's the hardest form of love.
-          It means you're putting what's best for them above what's easiest for you.
-          That takes courage. And it deserves real support.
-        </p>
+        <p>You're not. Finding the right care isn't abandonment — it's the hardest form of love. It means you're putting what's best for them above what's easiest for you. That takes courage. And it deserves real support.</p>
       </div>
-
       <div class="pain-card">
         <div class="pain-card-icon">🕰️</div>
         <h3>"I don't have time to research all of this."</h3>
-        <p>
-          You have a job. A family. You're probably already doing more than anyone sees.
-          Our advocates have already done the research — every facility, every state, every level of care.
-          One call and you're not doing this alone anymore.
-        </p>
+        <p>You have a job. A family. You're probably already doing more than anyone sees. Our advocates have already done the research — every facility, every state, every level of care. One call and you're not doing this alone anymore.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION: PERMISSION — YOU WON'T GET IT WRONG -->
+<!-- PERMISSION -->
 <section class="section-permission">
   <div class="container">
     <div class="permission-block">
       <span class="section-eyebrow">What we want you to hear</span>
       <h2>You're not going to get this wrong.</h2>
-
       <div class="big-quote">
         "After one call, families tell us the same thing every time: <em>I feel like I can finally breathe.</em>
         That shift — that sense of clarity — that's how you'll know you made the right call."
       </div>
-
       <p class="lead" style="text-align:center; margin: 0 auto 24px;">
         The families who reach out to us aren't doing it because they gave up.
         They're doing it because they care enough to find someone who actually knows the answers.
       </p>
-
       <p style="text-align:center; max-width: 580px; margin: 0 auto 32px;">
         You already know what needs to happen. You've known for a while. You just needed
         someone to walk it with you — someone without an agenda, without pressure,
         without trying to upsell you on anything. That's exactly who picks up when you call.
       </p>
-
-      <div style="text-align:center; margin-top: 8px;">
+      <div style="text-align:center;">
         <a href="tel:+18662533463" class="hero-cta" style="font-size:1.05rem; padding:16px 40px;">
           I'm ready. Call 866-ALF-FIND
         </a>
@@ -678,7 +806,7 @@
   </div>
 </section>
 
-<!-- SECTION: SIBLING DYNAMICS -->
+<!-- SIBLINGS -->
 <section class="section-siblings">
   <div class="container" style="max-width: 900px;">
     <span class="section-eyebrow">The family conversation</span>
@@ -688,7 +816,6 @@
       Our placement advocates give you something better than an opinion: a professional answer
       backed by thousands of placements, so you can walk into any family conversation with confidence.
     </p>
-
     <div class="sibling-columns">
       <div class="sibling-col">
         <h3>Before the call</h3>
@@ -704,17 +831,14 @@
   </div>
 </section>
 
-<!-- SECTION: HOW IT WORKS -->
+<!-- PROCESS -->
 <section class="section-process">
   <div class="container">
     <div class="center">
       <span class="section-eyebrow">Simple. Fast. Free.</span>
       <h2>Here's all it takes</h2>
-      <p class="lead" style="margin: 0 auto 10px; text-align:center;">
-        No forms to fill out. No waiting room. No hold music.
-      </p>
+      <p class="lead" style="margin: 0 auto 10px; text-align:center;">No forms to fill out. No waiting room. No hold music.</p>
     </div>
-
     <div class="process-steps">
       <div class="step">
         <div class="step-number">1</div>
@@ -723,7 +847,7 @@
       </div>
       <div class="step">
         <div class="step-number">2</div>
-        <h3>We Listen & Match</h3>
+        <h3>We Listen &amp; Match</h3>
         <p>We ask the right questions about care needs, location, budget, and preferences. Then we match you with the right options — not just available options.</p>
       </div>
       <div class="step">
@@ -735,7 +859,7 @@
   </div>
 </section>
 
-<!-- SECTION: CARE OPTIONS -->
+<!-- CARE TYPES -->
 <section class="section-care">
   <div class="container">
     <div class="center">
@@ -770,14 +894,14 @@
       </div>
       <div class="care-card">
         <div class="care-card-icon">🏘️</div>
-        <h3>Board & Care Homes</h3>
+        <h3>Board &amp; Care Homes</h3>
         <p>Small, home-like settings with personal attention — sometimes the perfect fit for the right person.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION: SOCIAL PROOF -->
+<!-- TESTIMONIALS -->
 <section class="section-proof">
   <div class="container">
     <div class="center">
@@ -787,53 +911,37 @@
     <div class="testimonials-grid">
       <div class="testimonial">
         <div class="stars">★★★★★</div>
-        <p class="testimonial-text">
-          "I had been going in circles for weeks. My brother wanted one thing, my sister another.
-          After one call to ALF-FIND I had an actual answer. I finally felt like I was doing the right thing for my mom."
-        </p>
+        <p class="testimonial-text">"I had been going in circles for weeks. My brother wanted one thing, my sister another. After one call to ALF-FIND I had an actual answer. I finally felt like I was doing the right thing for my mom."</p>
         <div class="testimonial-author">— Dana R., daughter / Colorado</div>
       </div>
       <div class="testimonial">
         <div class="stars">★★★★★</div>
-        <p class="testimonial-text">
-          "I kept asking myself if I was making a mistake. The advocate I talked to was so calm and knowledgeable.
-          By the end of the call I knew we had the right place. That guilt just lifted."
-        </p>
+        <p class="testimonial-text">"I kept asking myself if I was making a mistake. The advocate I talked to was so calm and knowledgeable. By the end of the call I knew we had the right place. That guilt just lifted."</p>
         <div class="testimonial-author">— Michael T., son / Texas</div>
       </div>
       <div class="testimonial">
         <div class="stars">★★★★★</div>
-        <p class="testimonial-text">
-          "Dad was discharged on a Friday. I called 866-ALF-FIND on Saturday morning.
-          By Monday he was touring the right facility. I didn't know this kind of help existed. It's genuinely free."
-        </p>
+        <p class="testimonial-text">"Dad was discharged on a Friday. I called 866-ALF-FIND on Saturday morning. By Monday he was touring the right facility. I didn't know this kind of help existed. It's genuinely free."</p>
         <div class="testimonial-author">— Patricia M., daughter / Florida</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SECTION: FINAL CTA + FORM -->
+<!-- FINAL CTA + FORM -->
 <section class="section-cta">
   <div class="container">
     <span class="section-eyebrow">The call that changes everything</span>
     <h2>You've been carrying this long enough.</h2>
-    <p class="lead">
-      One free call. A real advocate. A clear path forward.
-      Trust yourself — you already know it's time.
-    </p>
-
+    <p class="lead">One free call. A real advocate. A clear path forward. Trust yourself — you already know it's time.</p>
     <div class="cta-free-badge">100% Free — No Obligation</div>
     <a href="tel:+18662533463" class="cta-phone-number">866-ALF-FIND<br /><span style="font-size:0.45em; letter-spacing:0.02em; opacity:0.7;">(866-253-3463)</span></a>
-    <a href="tel:+18662533463" class="hero-cta" style="font-size:1.1rem; padding:18px 48px;">
-      Call Now — Available 24/7
-    </a>
+    <a href="tel:+18662533463" class="hero-cta" style="font-size:1.1rem; padding:18px 48px;">Call Now — Available 24/7</a>
 
     <div style="margin: 60px auto 0; max-width: 540px;">
       <div class="callback-form">
         <h3>Request a Callback</h3>
         <p class="form-sub">Prefer a callback? Fill this out and we'll reach you — usually within the hour.</p>
-
         <div class="form-group">
           <label>Your Name</label>
           <input type="text" placeholder="First and last name" />
@@ -863,7 +971,7 @@
           <textarea rows="3" placeholder="Timeline, budget range, specific needs — anything helps."></textarea>
         </div>
         <button type="submit" class="submit-btn">Request My Free Callback →</button>
-        <p class="form-privacy">🔒 Your information is private and protected. We follow HIPAA guidelines and will never sell your information.</p>
+        <p class="form-privacy">🔒 HIPAA compliant. Your information is never sold or shared.</p>
       </div>
     </div>
   </div>
@@ -884,6 +992,26 @@
 
 <!-- STICKY MOBILE CTA -->
 <a href="tel:+18662533463" class="sticky-cta">📞 Call Free — 866-ALF-FIND</a>
+
+<script>
+  function setTheme(theme, btn) {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    localStorage.setItem('alffind-theme', theme);
+  }
+
+  // Restore saved theme on load
+  const saved = localStorage.getItem('alffind-theme');
+  if (saved) {
+    document.documentElement.setAttribute('data-theme', saved);
+    const btn = document.querySelector('[data-theme="' + saved + '"]');
+    if (btn) {
+      document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+  }
+</script>
 
 </body>
 </html>
